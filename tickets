@@ -1,0 +1,37 @@
+function tickets (arr, criterion) {
+    class Tickets{
+        constructor(destination, price, status){
+          this.destination = destination,
+          this.price = price,
+           this.status = status
+        }
+        }
+    let newArr = [];
+    for(let el of arr){
+        let tokens = el.split('|');
+        let [destitanionName, price, status] = tokens;
+        price = Number(tokens[1]);
+         newArr.push(new Tickets(destitanionName, price, status));
+      
+    }
+    return newArr.sort((a, b) =>{
+    if(typeof a[criterion] === 'number'){
+       return a[criterion] - b[criterion];
+    }else{
+        return a[criterion].localeCompare(b[criterion]);
+    }
+}
+    )
+    
+}
+console.log(tickets (['Philadelphia|94.20|available',
+ 'New York City|95.99|available',
+ 'New York City|95.99|sold',
+ 'Boston|126.20|departed'],
+'destination'))
+
+console.log(['Philadelphia|94.20|available',
+'New York City|95.99|available',
+'New York City|95.99|sold',
+'Boston|126.20|departed'],
+'status')
